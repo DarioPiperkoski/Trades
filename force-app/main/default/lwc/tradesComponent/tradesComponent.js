@@ -16,7 +16,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 export default class TradesComponent extends LightningElement {
 
     @track channelName = "/event/TradeBooked__e"
-    @track pageNumber = 0;
+    @track pageNumber = 1;
     @track recordsPerPage = '5';
     @track recordsPerPageValues = [
         {label: '1', value: '1'},
@@ -49,13 +49,13 @@ export default class TradesComponent extends LightningElement {
     }
 
     get disablePreviousButtons() {
-        if(this.pageNumber <= 1){
+        if(this.pageNumber == 1){
             return true;
         }  
     }
 
     get disableNextButtons() {
-        if(this.pageNumber == this.totalPages){
+        if(this.pageNumber >= this.totalPages){
             return true;
         }
     }

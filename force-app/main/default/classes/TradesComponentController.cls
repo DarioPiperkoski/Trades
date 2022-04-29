@@ -41,7 +41,7 @@ public class TradesComponentController {
     public static TradesWrapper fetchRecords(Integer pageNumber, Integer recordsPerPage, String sortBy, String sortDirection){
         try{
             TradesWrapper tradesWrapper = new TradesWrapper();
-            Integer offset = (pageNumber > 1 ? pageNumber - 1 : 0) * recordsPerPage;
+            Integer offset = (pageNumber - 1) * recordsPerPage;
             String query = 'SELECT Id, Name, SellCurrency__c, SellAmount__c, BuyCurrency__c, BuyAmount__c, Rate__c, CreatedDate FROM Trade__c ORDER BY '+ sortBy +' '+ sortDirection +' LIMIT ' + recordsPerPage + ' OFFSET ' + offset;
             tradesWrapper.records = Database.query(query);
             String countQuery = 'SELECT COUNT() FROM Trade__c';
