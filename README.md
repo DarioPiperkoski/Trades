@@ -1,28 +1,27 @@
-Installing Trades using a Scratch Org
-Set up your environment. Follow the steps in the Quick Start: Lightning Web Components Trailhead project. The steps include:
+## Installing Trades using a Scratch Org
 
-Enable Dev Hub in your Trailhead Playground
-Install Salesforce CLI
-Install Visual Studio Code
-Install the Visual Studio Code Salesforce extensions, including the Lightning Web Components extension
-If you haven't already done so, authorize your hub org and provide it with an alias (myhuborg in the command below):
+#### 1. Login to your DevHub
 
-sfdx auth:web:login -d -a myhuborg
-Clone this repository:
+```sfdx auth:web:login -d -a myhuborg```
 
-git clone https://github.com/DarioPiperkoski/Trades
-cd trades
-Create a scratch org and provide it with an alias (trades in the command below):
+#### 2. Clone this repository:
 
-sfdx force:org:create -s -f config/project-scratch-def.json -a trades
-Push the app to your scratch org:
+```git clone https://github.com/DarioPiperkoski/Trades```
 
-sfdx force:source:push
-Assign the trades permission set to the default user:
+#### 3. Create a scratch org and provide it with an alias (trades in the command below):
 
-sfdx force:user:permset:assign -n trades
+```sfdx force:org:create -s -f config/project-scratch-def.json -a trades```
 
-sfdx force:org:open
-In Setup, under Themes and Branding, activate the Lightning Lite theme.
+#### 4. Push the app to your scratch org:
 
-In App Launcher, select the Ebury app.
+```sfdx force:source:push```
+
+#### 5. Assign the trades permission set to the default user:
+
+```sfdx force:user:permset:assign -n trades```
+
+#### 6. Open the scratch org
+
+```sfdx force:org:open```
+
+#### 7. In App Launcher, select the Ebury app.
