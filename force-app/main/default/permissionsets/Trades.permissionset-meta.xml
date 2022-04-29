@@ -1311,10 +1311,6 @@
         <name>AccessContentBuilder</name>
     </userPermissions>
     <userPermissions>
-        <enabled>false</enabled>
-        <name>AccountSwitcherUser</name>
-    </userPermissions>
-    <userPermissions>
         <enabled>true</enabled>
         <name>ActivitiesAccess</name>
     </userPermissions>
