@@ -126,6 +126,10 @@ export default class NewTrade extends LightningElement {
         this.closeModal();
     }
 
+    handleError(){
+       this.showLoading = false; 
+    }
+
     handleSubmit() {
         this.showLoading = true;
         this.template.querySelector('lightning-record-edit-form').submit();
