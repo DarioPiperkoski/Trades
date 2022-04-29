@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Dario
  * @group             : 
- * @last modified on  : 04-28-2022
+ * @last modified on  : 04-29-2022
  * @last modified by  : Dario
  * Modifications Log
  * Ver   Date         Author   Modification
@@ -16,7 +16,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 export default class TradesComponent extends LightningElement {
 
     @track channelName = "/event/TradeBooked__e"
-    @track pageNumber = 1;
+    @track pageNumber = 0;
     @track recordsPerPage = '5';
     @track recordsPerPageValues = [
         {label: '1', value: '1'},
@@ -49,7 +49,7 @@ export default class TradesComponent extends LightningElement {
     }
 
     get disablePreviousButtons() {
-        if(this.pageNumber == 1){
+        if(this.pageNumber <= 1){
             return true;
         }  
     }
