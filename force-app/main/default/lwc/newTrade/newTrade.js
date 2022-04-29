@@ -30,7 +30,7 @@ export default class NewTrade extends LightningElement {
     @track sellCurrency = null;
     @track buyCurrency = null;
     @track rate;
-    @track buyAmount;
+    @track buyAmount = null;
     @track sellAmount;
     @wire(getObjectInfo, { objectApiName: TRADE_OBJECT })
     objectInfo;
