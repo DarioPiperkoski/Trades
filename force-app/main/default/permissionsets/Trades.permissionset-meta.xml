@@ -2107,7 +2107,7 @@
         <name>ViewPlatformEvents</name>
     </userPermissions>
     <userPermissions>
-        <enabled>true</enabled>
+        <enabled>false</enabled>
         <name>ViewPrivateStaticResources</name>
     </userPermissions>
     <userPermissions>
