@@ -7,6 +7,7 @@
 #### 2. Clone this repository:
 
 ```git clone https://github.com/DarioPiperkoski/Trades```
+```cd Trades```
 
 #### 3. Create a scratch org and provide it with an alias (trades in the command below):
 
