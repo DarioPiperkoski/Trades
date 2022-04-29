@@ -24,4 +24,4 @@
 
 ```sfdx force:org:open```
 
-#### 7. In App Launcher, select the Ebury app.
+#### 7. In App Launcher, select the Ebury app and open the Trades tab (Second).
