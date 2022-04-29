@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Dario
  * @group             : 
- * @last modified on  : 04-28-2022
+ * @last modified on  : 04-29-2022
  * @last modified by  : Dario
  * Modifications Log
  * Ver   Date         Author   Modification
@@ -77,20 +77,20 @@ export default class NewTrade extends LightningElement {
             })
         } else {
             this.rate = null;
+            this.calculateBuyAmount();
         }
     }
 
     handleSellAmountChange(event){
         this.sellAmount = event.target.value;
         this.calculateBuyAmount();
-       
     }
 
     calculateBuyAmount(){
         if(this.rate && this.sellAmount){
             this.buyAmount = this.sellAmount * this.rate;
         } else {
-            this.buyAmount = 0;
+            this.buyAmount = null;
         }
     }
 
