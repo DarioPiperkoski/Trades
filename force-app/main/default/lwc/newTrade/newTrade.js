@@ -29,9 +29,10 @@ export default class NewTrade extends LightningElement {
     @track showModal = false;
     @track sellCurrency = null;
     @track buyCurrency = null;
-    @track rate;
+    @track rate = null;
     @track buyAmount = null;
-    @track sellAmount;
+    @track sellAmount = null;
+    @track showLoading = false;
     @wire(getObjectInfo, { objectApiName: TRADE_OBJECT })
     objectInfo;
 
@@ -48,6 +49,7 @@ export default class NewTrade extends LightningElement {
     buyCurrencyOptions;
 
     handleCurrencyChange(event){
+        this.showLoading = true;
         let fieldApiName = event.target.fieldName;
         if(fieldApiName == this.buyCurrencyField.fieldApiName){
             this.buyCurrency = event.target.value;
@@ -70,20 +72,25 @@ export default class NewTrade extends LightningElement {
                         this.showNotification(result.error.code + ': ' + (result.error.info ? result.error.info : result.error.type), 'error');
                     }
                 }
+                this.showLoading = false;
             }).catch(error => {
                 if(error && error.body && error.body.message){
                     this.showNotification(error.body.message, 'error');
-                } 
+                }
+                this.showLoading = false; 
             })
         } else {
             this.rate = null;
             this.calculateBuyAmount();
+            this.showLoading = false;
         }
     }
 
     handleSellAmountChange(event){
+        this.showLoading = true;
         this.sellAmount = event.target.value;
         this.calculateBuyAmount();
+        this.showLoading = false;
     }
 
     calculateBuyAmount(){
@@ -106,11 +113,22 @@ export default class NewTrade extends LightningElement {
 
     closeModal() {
         this.showModal = false;
+        this.sellCurrency = null;
+        this.buyCurrency = null;
+        this.rate = null;
+        this.buyAmount = null;
+        this.sellAmount = null;
     }
 
     handleTradeBooked(event){
         this.showNotification('Trade Booked!','success');
+        this.showLoading = false;
         this.closeModal();
+    }
+
+    handleSubmit() {
+        this.showLoading = true;
+        this.template.querySelector('lightning-record-edit-form').submit();
     }
     
 }
