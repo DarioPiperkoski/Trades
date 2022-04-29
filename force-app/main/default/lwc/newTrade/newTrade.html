@@ -1,0 +1,49 @@
+<!--
+  @description       : 
+  @author            : Dario
+  @group             : 
+  @last modified on  : 04-28-2022
+  @last modified by  : Dario
+  Modifications Log
+  Ver   Date         Author   Modification
+  1.0   04-27-2022   Dario   Initial Version
+-->
+<template>
+    <lightning-button variant="brand" label="New Trade" class="slds-m-top_medium" onclick={openModal}></lightning-button>
+
+     <!-- This Modal will only be visible if showModal is set to true -->
+     <template if:true={showModal}>
+        <section aria-modal="true" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-modal__content">
+                    <lightning-card title="New Trades">
+                        <lightning-record-edit-form object-api-name={tradeObject} onsuccess={handleTradeBooked}>
+                            <lightning-messages></lightning-messages>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_1-of-3">
+                                    <lightning-input-field field-name={sellCurrencyField} onchange={handleCurrencyChange} value={sellCurrency}></lightning-input-field>
+                                    <lightning-input-field field-name={sellAmountField} value={sellAmount} onchange={handleSellAmountChange}></lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-3">
+                                    <lightning-input-field field-name={rateField} value={rate} disabled></lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_1-of-3">
+                                    <lightning-input-field field-name={buyCurrencyField} onchange={handleCurrencyChange} value={buyCurrency}></lightning-input-field>
+                                    <lightning-input-field field-name={buyAmountField} value={buyAmount}></lightning-input-field>
+                                </div>
+                                </div>
+                            <div class="slds-float_left">
+                                <lightning-button type="submit" variant="brand" label="Create" disabled={disableButton} onclick={showTheSpinner}></lightning-button>
+                            </div>
+                            <div class="slds-float_right">
+                                <lightning-button variant="brand" label="Cancel" onclick={closeModal} class="slds-p-around_x-small"></lightning-button>
+                            </div>
+                        </lightning-record-edit-form>
+                    </lightning-card>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+</template>

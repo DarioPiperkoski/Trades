@@ -1,0 +1,55 @@
+<!--
+  @description       : 
+  @author            : Dario
+  @group             : 
+  @last modified on  : 04-28-2022
+  @last modified by  : Dario
+  Modifications Log
+  Ver   Date         Author   Modification
+  1.0   04-27-2022   Dario   Initial Version
+-->
+<template>
+    <lightning-card title="Booked Trades">
+        <div style="background-color: #fff; position: relative;" class="slds-p-around_medium">
+            <div if:true={showSpinner} style="z-index: 999;">
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </div>
+            <div style="display:flow-root;">
+                <div style="float:left">
+                    <lightning-combobox
+                        name="object"
+                        variant="label-hidden"
+                        disabled={disableCombobox}
+                        value={recordsPerPage}
+                        placeholder="Record Per Page"
+                        options={recordsPerPageValues}
+                        onchange={handleRecordsPerPageChange} ></lightning-combobox>
+                </div>
+                <div style="float:right">
+                    <c-new-trade onchildnotification={childNotification}></c-new-trade> &nbsp;
+                </div>
+            </div>
+            <br />
+            <div>
+                <lightning-datatable
+                    key-field="id"
+                    hide-checkbox-column=true
+                    sorted-by={sortBy}
+                    sorted-direction={sortDirection}
+                    onsort={doSorting}
+                    data={records}
+                    columns={columns}>
+                </lightning-datatable>
+            </div>
+            <br />
+            <div style="float:right">
+                {recordViewMessage} &nbsp;
+                <lightning-button variant="brand" label="First" disabled={disablePreviousButtons} class="slds-m-top_medium" onclick={handleNavigation} ></lightning-button> &nbsp;
+                <lightning-button variant="brand" label="Previous" disabled={disablePreviousButtons} class="slds-m-top_medium" onclick={handleNavigation} ></lightning-button> &nbsp;
+                <lightning-button variant="brand" label="Next" disabled={disableNextButtons} class="slds-m-top_medium" onclick={handleNavigation} ></lightning-button> &nbsp;
+                <lightning-button variant="brand" label="Last" disabled={disableNextButtons} class="slds-m-top_medium" onclick={handleNavigation} ></lightning-button>
+            </div>
+            <br />
+        </div>
+    </lightning-card>
+</template>
